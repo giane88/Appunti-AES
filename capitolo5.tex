@@ -1,0 +1,122 @@
+\label{capitolo5}
+\section{Ottimizzazione dei costi di generazione}
+Consideriamo una rete con $N$ generatori nella quale in ogni istante la potenza meccanica totale è uguale alla potenza elettrica richiesta.
+$$\sum_{i=1}^{N}P_{mi}= P_e$$
+Il controllo primario e secondario assicurano questa condizione ed inoltre mantengono la frequenza costante ad un certo setpoint. Ora ci chiediamo però qual'è il costo di tale operazione; conoscendo la curva di efficenza di ogni generatore possiamo scrivere N equazioni che relazioni le $P_{gi}$ (potenza generata dal generatore i) ad un \emph{cost rate} $c_i[\EUR/s]$. Possiamo esprimere tale relazione come $c_i(P_{gi})$ che è una funzione monotona crescente nel quale $P_{gi}$ può variare tra un valore massimo e un valore minimo $P_{gi,min}\leq P_{gi}\leq P_{gi,max}$.\\
+Il problema che ci poniamo ora è quello di minimizzare il costo, o più semplicemente minimizzare il cost rate totale.
+$$
+\begin{array}{cc}
+min &\sum_{i=1}^N c_i(P_{gi})\\
+\\
+s.t. &\sum_{i=1}^NP_{gi}=P_e\\
+\\
+&P_{gi,min}\leq P_{gi}\leq P_{gi,max} \quad i=1\dots N
+\end{array}
+$$
+Sarebbe risultato più complicato trovare il valore ottimo di cost rate per il singolo generatore ma questa soluzione permette di capirne il funzionamento con un buon compromesso sull'ottimalità della soluzione finale.\\
+Molto frequentemente il modello di costo viene rappresentato come un polinomio di terzo grado del tipo:
+$$c_i(P_{gi})=(k_{g1}P_{gi}+k_{g2}P_{gi}^2+k_{g3}P_{gi}^3)k_F+k_{om0}+k_{om1}P_{gi}$$
+Dove $k_{gj}$ è il coefficente di costo per la produzione di energia, $k_F$ è il costo del carburante per unità di energia e $k_{om\textit{l}}$ è il costo di mantenimento dell'impianto.\\
+Il motivo per qui si tende ad utilizzare un polinomio di ordine 3 è il fatto che il \emph{power ratio} $r_{fP}(P_g)=Q_f(P_g)/P_g$, dove $Q_f$ è la potenza generata dal carburante e $P_g$ è la potenza generata dal generatore e considerando che la quantità $r_{fP}$ è adimensionale, abbia un minimo nel punto di ottimo. Il modo migliore per sintetizzare il modello è quello di descrivere la funzione $r_{fP}(P_g)$ come una parabola con un punto di ottimo nel vertice $r_{fP}^o$, la frazione $p_g^o$ di $ P_{g,max}$ corrisponde al rapporto ottimo dove la funzione $p_g$ è definita come $P_g/P_{g,max}$, ed infine il massimo power ratio $r_{fP}^{ml}$ al minimo carico sostenibile 	$p_g^{ml}= P_{g,min} /P_{g,max}$
+Così da ottenere 
+$$
+r_{fP}(p_g)= r_{fP}^o+\frac{r_{fP}^{ml}-r_{fP}^o}{(p_g^o-P_g^{ml})^2}+(p_g-p_{g}^o)^2;
+$$
+e
+$$
+r_{fP}(P_g)= r_{fP}^o+\frac{r_{fP}^{ml}-r_{fP}^o}{(P_g^o-P_{g,min})^2}+(P_g-P_{g}^o)^2;
+$$
+A questo punto possiamo scrivere 
+$$
+Q_f(P_g)=r_{fP}P_g=\left (r_{fP}^0\frac{r_{fP}^{ml}-r_{fP}^o}{(P_g^o-P_{g,min})^2}+(P_g-P_{g}^o)^2\right ) P_g
+$$
+Che contiene le potenze d $P_g$ dalla 1 alla 3 così possiamo scriverlo come $k_{g1}P_{gi}+k_{g2}P_{gi}^2+k_{g3}P_{gi}^3$ ed in particolare abbiamo che:
+$$
+k_{g1}=\frac{r_{fP}^{ml}{P^o_g}^2-r_{fP}^oP_{g,min}(2P^o_g-P_{g,min})}{(P^o_g-P_{g,min})^2}
+$$
+$$
+k_{g2}=\frac{2P^o_g(r_{fP}^{o}-r_{fP}^{ml})}{(P^o_g-P_{g,min})^2}
+$$
+$$
+k_{g3}=\frac{r_{fP}^{ml}-r_{fP}^{o}}{(P^o_g-P_{g,min})^2}
+$$
+
+\subsection{Il caso di due generatori}
+Vediamo il caso di due generatori collegati ad una rete e le previsioni di richiesta di energia da parte della rete $\hat{P_e}$ per il prossimo periodo. Lo scopo è trovare la distribuzione ottima dei generatori \{$P_{gi}^{opt}$\} per soddisfare la richiesta di energia $\hat{P_e}$, mandare poi ad ogni generatore il valore $P_{gi}^{opt}$ previsto ed effettuare a questo punto il controllo primario e secondario.\\
+Ora consideriamo solo il caso in cui entrambi i generatori sono attivi; la funzione di costo è data da:
+$$P_{g2}=\hat{P_e}-P_{g1} \Rightarrow c_{12}(P_{g1})= c_1(P_{g1})+c2(\hat{P_e}-P_{g1})$$
+Ora troviamo un possibile costo ottimo $c_{12}^{opt}(\hat{P_e})$ all'interno delle distribuzioni dei due generatori e determiniamo il $P_{g1}^{opt}(\hat{P_e})$ corrispondente al minimo.\\
+Quello che abbiamo appena visto è il procedimento generale vediamo ora un processo più matematico per calcolare i diversi valori.\\
+Prima di tutto esponiamo il problema in termini di funzioni; vogliamo minimizzare una funzione reale $f$ di $N_x$ variabili reali $x_i$:
+$$f(x_1,x_2,\dots,x_{N_x})\quad f(\dots)\in \Re,\quad x_i\in\Re, i=1\dots N_x$$
+soggetto a $N_e$ vincoli di uguaglianza nella forma:
+$$g_i(x_1,x_2,\dots,x_{N_x})=0\quad g_i(\dots)\in \Re, i=1\dots N_e$$
+e soggetto a $N_i$ vincoli di disugaglianza nella forma:
+$$h_i(x_1,x_2,\dots,x_{N_x})\geq 0\quad h_i(\dots)\in\Re, i=1\dots N_i$$
+La Lagrangiana del problema è data da:
+$$L=f(x_1,x_2,\dots,x_{N_x})+\sum_{i=1}^{N_e}\lambda_ig_i(x_1,x_2,\dots,x_{N_x})$$
+dove i coefficenti $\lambda_i$ sono detti moltiplicatori lagrangiani.\\
+Calcoliamo il gradiente di L come:
+$$
+\nabla_xL(x,\lambda)=\left[\frac{\partial L}{\partial x_1}\frac{\partial L}{\partial x_2}\dots\frac{\partial L}{\partial x_{N_x}}\right]
+$$
+$$
+\nabla_xL(x,\lambda)=\left[\frac{\partial L}{\partial \lambda_1}\frac{\partial L}{\partial \lambda_2}\frac{\partial L}{\partial \lambda_{N_e}}\right]
+$$
+Osserviamo inoltre che i diversi componenti di $\nabla_xL$ sono dati da:
+$$
+\frac{\partial L}{\partial x_k}=\frac{\partial f}{\partial x_k}+\sum_{i=1}^{N_e}\lambda_i \frac{\partial g_i}{\partial x_k}
+$$
+Supponiamo adesso che $(x^o,\lambda^o)$ sia soluzione delle $N_e+N_x$ equazioni.
+In questa situazione possiamo distinguere due casi:
+\begin{itemize}
+\item Caso 1:$\nabla_xf$ in $x^o$ è un vettore di zeri; in questo caso $x^o$ è un punto stazionario per f(x) indipendentemente dai vincoli imposti da g(x). La funzione $\nabla_xL$ può essere ridotta alla semplice espressione $\lambda 'J_xg=0$
+\item Caso 2:$\nabla_xf$ in $x^o$ non è un vettore di zeri in questo caso $\lambda^o$ non può essere un vettore di zeri. Possiamo quindi scrivere
+$\nabla_xf=-\lambda 'J_xg$ e questo ci dice che i gradienti di f e di g sono paralleli.
+\end{itemize}
+
+\subsection{Il procedimento}
+Ricapitolando noi dobbiamo risolvere il seguente sistema.
+$$
+\left\{
+\begin{array}{ccc}
+\nabla_xL(x,\lambda)&=& 0_{1\times N_x}\\
+\nabla_\lambda L(x,\lambda)&=& 0_{1\times N_e}\\
+\end{array}\right.
+$$
+Ora dobbiamo chiederci se $x^o$ è un punto di massimo o di minimo. Essendo questo calcolo relativamente complesso ci limitiamo all'analisi della matrice Hessiana di L. Questo perchè l'hessiana è matrice della derivata seconda e i suoi elementi sono dati da:
+$$
+\begin{array}{ccccccc}
+L_{x_ix_j}(x,\lambda)&=&\frac{\partial^2L(x,\lambda)}{\partial x_ix_j}&=&\frac{\partial^2f(x)}{\partial x_ix_j}+\lambda \frac{\partial^2g(x)}{\partial x_ix_j}&=&f_{x_ix_j}+\lambda g_{x_ix_j}\\
+\\
+L_{x_i\lambda_j}(x,\lambda)&=&\frac{\partial^2L(x,\lambda)}{\partial x_i\lambda_j}&=&\frac{\partial}{\partial x_i\lambda_j}\left ( \frac{\partial f(x)}{\partial x_i\lambda_j}+\lambda \frac{\partial g(x)}{\partial x_i\lambda_j}\right )&=& g_{jx_j}\\
+\\
+L_{\lambda_i\lambda_j}(x,\lambda)&=&\frac{\partial^2L(x,\lambda)}{\partial \lambda_i\lambda_j}&=&0\\
+\end{array}
+$$
+Costruiamo ora la matrice hessiana partento dalle derivate $\lambda\lambda$
+$$
+H_{x,\lambda}L=\left [
+\begin{array}{cccccc}
+L_{\lambda_1\lambda_1}&\dots&L_{\lambda_1\lambda_{N_e}}&L_{\lambda_1x_1}&\dots&L_{\lambda_1x_{N_x}}\\
+\vdots&&\vdots&\vdots&&\vdots\\
+L_{\lambda_{N_e}\lambda_1}&\dots&L_{\lambda_{N_e}\lambda_{N_e}}&L_{\lambda_{N_e}x_1}&\dots&L_{\lambda_{N_e}x_{N_x}}\\
+L_{x_1\lambda_1}&\dots&L_{x_1\lambda_{N_e}}&L_{x_1x_1}&\dots&L_{x_1x_{N_x}}\\
+\vdots&&\vdots&\vdots&&\vdots\\
+L_{x_{N_x}\lambda_1}&\dots&L_{x_{N_x}\lambda_{N_e}}&L_{x_{N_x}x_1}&\dots&L_{x_{N_x}x_{N_x}}\\
+\end{array}
+\right ]
+$$
+Sostituendo i diversi valori otteniamo
+$$
+H_{x,\lambda}L=\left [
+\begin{array}{cccccc}
+0&\dots&0&g_{1x_1}&\dots&g_{1x_{N_x}}\\
+\vdots&&\vdots&\vdots&&\vdots\\
+0&\dots&0&g_{{N_e}x_1}&\dots&g_{{N_e}x_{N_x}}\\
+g_{1x_1}&\dots&g_{{N_e}x_1}&f_{x_1x_1}+\lambda g_{x_1x_1}&\dots&f_{x_1x_{N_x}}+\lambda g_{x_1x_{N_x}}\\
+\vdots&&\vdots&\vdots&&\vdots\\
+g_{1x_{N_x}}&\dots&g_{{N_e}x_{N_x}}&f_{x_{N_x}x_1}+\lambda g_{x_{N_x}x_1}&\dots&f_{x_{N_x}x_{N_x}}+\lambda g_{x_{N_x}x_{N_x}}\\
+\end{array}
+\right ]
+$$
