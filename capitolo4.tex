@@ -1,30 +1,30 @@
-ï»¿\label{capitolo4}
+\label{capitolo4}
 \section{Modelli e problemi di controllo}
 Nel controllo di sistemi elettrici possiamo incontrare due tipi di problemi:
 \begin{itemize}
 \item \textbf{problemi di controllo di potenza} nei quali si cerca di fornire la potenza richiesta agli utilizzatori; minimizzando i costi globalmente o fornendo la massima potenza richiesta minimizzando i costi del singolo generatore.
-\item \textbf{problemi di controllo di energia} nei quali si richiede che l'elettricitÃ  abbia voltaggio e frequenza necessari per cooperare con tutti i generatori e i carichi. 
+\item \textbf{problemi di controllo di energia} nei quali si richiede che l'elettricità abbia voltaggio e frequenza necessari per cooperare con tutti i generatori e i carichi. 
 \end{itemize}
 Questi problemi sono apparentemente interlacciati in quanto dipendono entrambi dai generatori. Inoltre, solo ai generatori si applicano i meccanismi di controllo mentre i carichi sono considerati disturbi esogeni.\\
 Possiamo considerare due tipi di generatori, il primo con masse rotanti e alternatori, il secondo senza masse rotanti ma con inverter.
-I generatori con masse rotanti forniscono la potenza richiesta aumentando o diminuedo la velocitÃ  di rotazione con conseguente alterazione della frequenza.\\
-Quando ci spostiamo dal controllo dei generatori al controllo del carico della rete incontriamo un secondo problema ovvero il problema del flusso di carico; infatti si vuole distribuire la potenza senza perÃ² sovraccaricare le linee e possibilmente minimizzando le perdite di carico.\\
+I generatori con masse rotanti forniscono la potenza richiesta aumentando o diminuedo la velocità di rotazione con conseguente alterazione della frequenza.\\
+Quando ci spostiamo dal controllo dei generatori al controllo del carico della rete incontriamo un secondo problema ovvero il problema del flusso di carico; infatti si vuole distribuire la potenza senza però sovraccaricare le linee e possibilmente minimizzando le perdite di carico.\\
 \subsection{Modello di un generatore termoelettrico}
-Questo tipo di generatore Ã¨ formato da una massa rotante nel quale potenza e frequenza sono accoppiate.\\
+Questo tipo di generatore è formato da una massa rotante nel quale potenza e frequenza sono accoppiate.\\
 Prendiamo il caso di un generatore isolato nel quale abbiamo una fornace nella quale si brucia del carburante e di conseguenza si produce calore, il calore prodotto trasforma un fluido in vapore, questo vapore fa muovere una turbina che infine fa muovere l'alternatore.\\
-Prendiamo in considerazione come ingresso il sistema che brucia carburante e come uscita la potenza meccanica dell'alternatore. Per semplicitÃ  consideriamo come ingresso esogeno la potenza $P_c$ prodotta dalla combustione e rilasciata al contenitore principale di energia (vapore).
-Il bilancio di energia immagazzinata Ã¨ dato da:
+Prendiamo in considerazione come ingresso il sistema che brucia carburante e come uscita la potenza meccanica dell'alternatore. Per semplicità consideriamo come ingresso esogeno la potenza $P_c$ prodotta dalla combustione e rilasciata al contenitore principale di energia (vapore).
+Il bilancio di energia immagazzinata è dato da:
 $$\dot{E}= P_c-P_{loss}-P_t$$
-dove $P_{loss}$ Ã¨ la potenza persa nelle pareti esterne mentre $P_t$ Ã¨ la potenza consumata dalla turbina.
-Per semplicitÃ  assumiamo che l'immagazzinatore di energia sia completamente vapore e che la sua massa sia costante; a questo punto possiamo associare la $P_{loss}$ alla differenza di temperatura tra la temperatura di saturazione del vapore a una certa pressione $p$ e la temperatura esterna tramite la relazione:
+dove $P_{loss}$ è la potenza persa nelle pareti esterne mentre $P_t$ è la potenza consumata dalla turbina.
+Per semplicità assumiamo che l'immagazzinatore di energia sia completamente vapore e che la sua massa sia costante; a questo punto possiamo associare la $P_{loss}$ alla differenza di temperatura tra la temperatura di saturazione del vapore a una certa pressione $p$ e la temperatura esterna tramite la relazione:
 $$P_{lost}=G_{loss}(T_{sat}(p)-T_{ext})$$
-In generale la $T_{sat}>>T_{ext}$ cosÃ¬ possiamo scrivere che:
+In generale la $T_{sat}>>T_{ext}$ così possiamo scrivere che:
 $$P_{loss}=K_{loss}\frac{E}{M}$$
-dove $K_{loss}$ Ã¨ un opportuno parametro legato alla superficie di dispersione, e la divisione per $M$ esprime la dipendenza della potenza dallo stato del vapore.\\
+dove $K_{loss}$ è un opportuno parametro legato alla superficie di dispersione, e la divisione per $M$ esprime la dipendenza della potenza dallo stato del vapore.\\
 Un'altra semplificazione riguarda $P_t$ infatti trascuriamo il surriscaldamento che subisce il vapore all'atto dell'attraversamento della turbina e facciamo dipendere $P_t$ soltanto dalla pressione ($E/M$) e dall'apertura della valvola della turbina $\theta \in [0,1]$
 $$P_t=\theta K_{draw} \frac{E}{M}$$
-e dove $K_{draw}$ Ã¨ un altro parametro.\\
-La potenza meccanica che raggiunge l'alternatore Ã¨ ottenuta tenendo conto dell'efficenza meccanica dell'alternatore assunta costante e chiamata $\eta_m$
+e dove $K_{draw}$ è un altro parametro.\\
+La potenza meccanica che raggiunge l'alternatore è ottenuta tenendo conto dell'efficenza meccanica dell'alternatore assunta costante e chiamata $\eta_m$
 $$P_m=\eta_m P_t$$
 Mettendo le equazioni a sistema otteniamo
 \begin{equation}
@@ -47,7 +47,7 @@ P_m&=&\frac{\eta_m}{T_{draw}}E\theta &&
 \right.
 \end{equation}
 In questo caso $T_{loss}$ e $T_{draw}$ sono le costanti di tempo con le quali l'energia viene rispettivamente persa dalla superficie esterna e prodotta attraverso l'alternatore alla massima apertura della valvola della turbina.
-Questo modello risulta molto impreciso e in un caso reale sarebbe applicabile solo nell'intorno di un punto di lavoro. Ma per i nostri scopi Ã¨ piÃ¹ che sufficente.\\
+Questo modello risulta molto impreciso e in un caso reale sarebbe applicabile solo nell'intorno di un punto di lavoro. Ma per i nostri scopi è più che sufficente.\\
 Introduciamo ora la potenza nominale del generatore $P_n$ e chiamiamo $T_{rest}$ il tempo richiesto dal generatore per immagazzinare la sua "energia nominale" definita come $E_n=P_nT_{rest}$. Dividiamo ora entrambe le equazioni per $E_n$
 \begin{equation}
 \left\{
@@ -58,7 +58,7 @@ p_m&=&\eta_m\frac{T_{rest}}{T_{draw}}e\theta&&&&
 \end{array}
 \right.
 \end{equation}
-Dove $p_c=P_c/P_n$ e $p_m= P_m/P_n$ sono rispettivamente la potenza normalizzata di combustione e meccanica, ed $e=E/E_n$ Ã¨ l'energia normalizzata.\\
+Dove $p_c=P_c/P_n$ e $p_m= P_m/P_n$ sono rispettivamente la potenza normalizzata di combustione e meccanica, ed $e=E/E_n$ è l'energia normalizzata.\\
 A questo punto calcoliamo l'equilibrio di questo modello per ingressi costanti $\overline{p_c},\overline{\theta}$
 $$\overline{e}=\frac{T_{draw}T_{loss}\overline{p_c}}{T_{ress}(T_{draw}+T_{loss}\overline{theta})}$$
 $$\overline{p_m}=\frac{\eta_mT_{loss}\overline{p_c}\overline{\theta}}{T_{draw}+T_{loss}\overline{\theta}}$$
@@ -96,7 +96,7 @@ $$
 \end{array}
 \right.
 $$
-La corrispondente matrice di trasferimento Ã¨:
+La corrispondente matrice di trasferimento è:
 $$
 \begin{array}{lc}
 \Gamma(s) &=\left[\begin{array}{cc}
@@ -122,33 +122,33 @@ Alcune altre semplificazioni che faremo a livello di sistema per valutare i cost
 \begin{itemize}
 \item Assumeremo che i costi siano dati solo dal consumo di carburante e non dal mantenimento dell'impianto
 \item La combustione non avviene allo stesso modo ai diversi carichi di sistema
-\item Il cunsumo specifico $c_s$Ã¨ definito tipicamente decrescente rispetto a $P_c$.
+\item Il cunsumo specifico $c_s$è definito tipicamente decrescente rispetto a $P_c$.
 \item Il flusso di carburante consumato $w_c$ e $p_c$ sono legati dall'equazione
 $$w_c=c_s(p_cP_n)p_cP_n;$$
 \end{itemize}
-La potenza attiva richiesta dal carico, un parametro esogeno per il generatore, viene detta $P_e$ cosÃ¬ il bilancio delle energie per la massa in rotazione Ã¨:
+La potenza attiva richiesta dal carico, un parametro esogeno per il generatore, viene detta $P_e$ così il bilancio delle energie per la massa in rotazione è:
 $$J\omega\dot{\omega}=P_m-P_e$$
-dove $J$ Ã¨ l'inerzia totale vista all'albero del generatore (si pensi al caso di piÃ¹ generatori).
+dove $J$ è l'inerzia totale vista all'albero del generatore (si pensi al caso di più generatori).
 L'equazione del rendimento all'equilibrio  per ogni $\omega$ e $\overline{P_m}$ e $\overline{P_e}$ siano costanti e coincidenti la linearizazione diventa:
 $$\Delta\dot{\omega}=-\frac{P_m-P_e}{J\overline{\omega}^2}\Delta\omega+\frac{1}{J\overline{\omega}}(\Delta P_m-\Delta P_e)$$
 Visto che $P_e=P_m$ e che $\omega$ viene regolato al valore desiderato $\omega_0$ otteniamo:
 $$\Delta\dot{\omega}=\frac{1}{J\omega_0}(\Delta P_m-\Delta P_e)$$
-Normalizzando $P_{m,e}$ con $P_n$ e $\omega$ con $\omega_0$ e usando $\delta$ per indicare le variazioni delle quantitÃ  normalizzate otteniamo:
+Normalizzando $P_{m,e}$ con $P_n$ e $\omega$ con $\omega_0$ e usando $\delta$ per indicare le variazioni delle quantità normalizzate otteniamo:
 $$\frac{\Delta\dot{\omega}}{\omega_0P_n}=\frac{1}{J\omega_0}(\frac{\Delta P_m}{\omega_0P_n}-\frac{\Delta P_e}{\omega_0P_n})$$
 $$\delta\dot{\omega}=\frac{1}{J\omega_0^2}(\delta P_m-\delta P_e)$$
 
 \subsection{Controllo di un generatore}
-Dopo aver descritto la relazione che lega $(\Delta\omega, \Delta p_c)\rightarrow(\Delta p_m, \Delta e)$ e la matrice di trasferimento del primo ordine $\Gamma (s)$. Ricordando inoltre che il contenuto di energia Ã¨ legato alla pressione del vapore $p$.
+Dopo aver descritto la relazione che lega $(\Delta\omega, \Delta p_c)\rightarrow(\Delta p_m, \Delta e)$ e la matrice di trasferimento del primo ordine $\Gamma (s)$. Ricordando inoltre che il contenuto di energia è legato alla pressione del vapore $p$.
 Ora parleremo del controllo di pressione nel generatore che significa anche controllare l'energia contenuta nel generatore.\\
 Per effettuare questo controllo il nostro problema diventa come controllare la potenza meccanica in uscita dall'alternatore. Per applicare questo controllo si utilizzano principalmente tre metodi:
 \begin{itemize}
 \item \textbf{boiler follows}: consiste nella modulazione di $\theta$ oer modulare $\Delta P_m$ e $\Delta P_c$ per mantenere costante la pressione; questo permette una regolazione di $P_m$ molto rapida ma che provoca piccole variazioni di pressione che causano un forte stress al sistema.
-\item \textbf{turbine follows} consiste nell'usare $\omega$ e $P_c$ per regolare il sistema; con questo metodo si ha un controllo sulla pressione migliore ma il tempo di risposta del sistema Ã¨ piÃ¹ lento.
+\item \textbf{turbine follows} consiste nell'usare $\omega$ e $P_c$ per regolare il sistema; con questo metodo si ha un controllo sulla pressione migliore ma il tempo di risposta del sistema è più lento.
 \item \textbf{sliding pressure} In questo sistema si mantiene $\theta$ al suo valore massimo e si controlla $P_m$ agendo su $w_c$; questo sistema permette di non sollecitare troppo la turbina ma come contro ha dei tempi di risposta molto lunghi.
 
 \end{itemize}
 
-Descriviamo ora gli attuatori che controllano $\theta$ e $P_c$ tenendo conto dei loro tempi di risposta che non sono sicuramente immediati. La matrice di trasferimento Ã¨:
+Descriviamo ora gli attuatori che controllano $\theta$ e $P_c$ tenendo conto dei loro tempi di risposta che non sono sicuramente immediati. La matrice di trasferimento è:
 $$A(s)=\left[\begin{array}{cc}
 \frac{1}{1+sT_{\theta}} & 0\\
 \\
@@ -163,8 +163,8 @@ $$\left[\begin{array}{c}
 \Delta P_{cc}(s)
 \end{array}\right]$$
 Dove $\theta_c$ e $P_{cc}$ sono le variabili di comando degli attuatori rispettivamente di $\theta$ e $P_c$
-Il sistema Ã¨ cosÃ¬ modellizzato dalla matrice di trasferimento $\Gamma(s)A(s)$\\
-D'ora in poi non indicheremo piÃ¹ il pedice "c" per indicare le variabili di controllo e considereremo A(s) come parte del processo, ovvero considerando sempre la cascata tra $A$ e $\Gamma$ ma prendendo come ingressi $\theta$ e $P_c$. In altre parole possiamo scrivere il sistema come:
+Il sistema è così modellizzato dalla matrice di trasferimento $\Gamma(s)A(s)$\\
+D'ora in poi non indicheremo più il pedice "c" per indicare le variabili di controllo e considereremo A(s) come parte del processo, ovvero considerando sempre la cascata tra $A$ e $\Gamma$ ma prendendo come ingressi $\theta$ e $P_c$. In altre parole possiamo scrivere il sistema come:
 $$
 \left[\begin{array}{c}
 \Delta P_m(s)\\ \Delta e(s)
@@ -177,12 +177,12 @@ $$
 dove $\Gamma_{ap}(s)=\Gamma(s)A(s)$\\
 
 Tornando allo scopo principale, il tipo di politica di controllo utilizzata per controllare il sistema si basa su quali tipi di generatori vengono utilizzati, sulle regole della rete e talvolta anche in base al carico presente in quell'istante.
-Qualsiasi sia la politica di controllo scelta e qualsiasi sia la variabile di controllo usata per governare $P_m$ (d'ora in poi denotata con $u_P$) il sistema puÃ² essere controllato dalla funzione di trasferimento $G(s)$ espressa come:
+Qualsiasi sia la politica di controllo scelta e qualsiasi sia la variabile di controllo usata per governare $P_m$ (d'ora in poi denotata con $u_P$) il sistema può essere controllato dalla funzione di trasferimento $G(s)$ espressa come:
 $$G(s)= \frac{\Delta P_m(s)}{\Delta u_P(s)}\Bigg|_{struttura_-generatore,politica_-di_- controllo}$$
 
 Possiamo normalizzare $G(s)$ sostituendo la potenza normalizzata $P_n$ e la variabile di controllo normalizzata $u_{P_n}$ ottenendo:
 $$g(s)=\frac{\delta P_m(s)}{\delta u_p(s)}$$
-dove $u_{P_n}$ Ã¨ 1 o $P_n$ se la variabile di controllo Ã¨ rispettivamente o $\theta$ o $P_c$ in ogni caso lo schema da controllare risulta essere (per un generatore isolato):
+dove $u_{P_n}$ è 1 o $P_n$ se la variabile di controllo è rispettivamente o $\theta$ o $P_c$ in ogni caso lo schema da controllare risulta essere (per un generatore isolato):
 \begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{img/geniso.png}
@@ -196,19 +196,19 @@ Per il caso di generatore isolato il sistema di controllo risulta essere quello 
 \caption{Schema del sistema di controllo per un generatore isolato}
 \label{fig:gencontrol}
 \end{figure}
-Dove $1/sT_A$ Ã¨ un integratore che impone a zero l'uscita in caso di sistema all'equilibrio, mentre $R(s)$ Ã¨ un altro integratore per mantenere a zero l'errore di frequnza nel caso di sistema all'equilibrio.
+Dove $1/sT_A$ è un integratore che impone a zero l'uscita in caso di sistema all'equilibrio, mentre $R(s)$ è un altro integratore per mantenere a zero l'errore di frequnza nel caso di sistema all'equilibrio.
 \subsection{Generatori in rete}
-Prima di parlare del caso di piÃ¹ generatori connessi in rete dobbiamo fare alcune ipotesi sulla rete stessa; infatti si suppone che la rete sia rigida e sincrona. I generatori invece ruotano alla stessa velocitÃ  senza drift sul valore impostato.
-In questo caso tutta la potenza meccanica (non normalizzata) viene sommata, mentre un unica potenza elettrica viene sottratta (il totale del carico). Il sistema sotto controllo Ã¨ rappresentato in figura \ref{fig:gennetwork}
+Prima di parlare del caso di più generatori connessi in rete dobbiamo fare alcune ipotesi sulla rete stessa; infatti si suppone che la rete sia rigida e sincrona. I generatori invece ruotano alla stessa velocità senza drift sul valore impostato.
+In questo caso tutta la potenza meccanica (non normalizzata) viene sommata, mentre un unica potenza elettrica viene sottratta (il totale del carico). Il sistema sotto controllo è rappresentato in figura \ref{fig:gennetwork}
 \begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{img/gennetwork.png}
-\caption{Sistema di piÃ¹ generatori collegati alla 
+\caption{Sistema di più generatori collegati alla 
 rete.}
 \label{fig:gennetwork}
 \end{figure}
-Dove $J$ Ã¨ l'inerzia totale della rete.\\
-A questo punto Ã¨ facile estendere lo schema del generatore isolato allo scema con piÃ¹ generatori come vediamo in figura \ref{fig:netcontrol}.
+Dove $J$ è l'inerzia totale della rete.\\
+A questo punto è facile estendere lo schema del generatore isolato allo scema con più generatori come vediamo in figura \ref{fig:netcontrol}.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{img/netcontrol.png}
@@ -216,24 +216,24 @@ A questo punto Ã¨ facile estendere lo schema del generatore isolato allo scema c
 \label{fig:netcontrol}
 \end{figure}
 In questo schema l'integratore ($1/J\omega_0^2s$) garantisce che l'errore sulla potenza in caso di equilibrio sia zero. Mentre i regolatori ($R_1\dots R_n$) non possono essere tutti degli integratori altrimenti avremo delle parti non controllabili del sistema.\\
-Per capire il perchÃ¨ osserviamo lo schema di figura \ref{fig:schema} equivalente al sistema.
+Per capire il perchè osserviamo lo schema di figura \ref{fig:schema} equivalente al sistema.
 \begin{figure}[htb]
 \centering
 \includegraphics[width=10cm]{img/schema.png}
 \caption{Schema equivalente}
 \label{fig:schema}
 \end{figure} 
-Dove $\Delta P_{mtot}$ Ã¨ la variazione della potenza meccanica totale, e
+Dove $\Delta P_{mtot}$ è la variazione della potenza meccanica totale, e
 $$F(s)=\sum_{i=1}^N R_i(s)g_i(s)P_{ni}$$
-Degli integratori in $R_i$ andrebbero in parallelo e farebbero perdere la controllabilitÃ .\\
-La soluzione a questo problema Ã¨ avere un solo integratore:
+Degli integratori in $R_i$ andrebbero in parallelo e farebbero perdere la controllabilità.\\
+La soluzione a questo problema è avere un solo integratore:
 \begin{itemize}
 \item avere un primo regolatore $R_i(s)$ di tipo proporzionale.
 \item introdurre un controllore in seconda frequenza di tipo integrale per l'intera rete.
 \item l'output del secondo regolatore entra in alcuni correttori che entrano a loro volta nell'ingresso degli $R_i$
 \end{itemize}
 \section{Applicazione del paradigma OO al modello del generatore}
-Fino ad ora abbiamo utilizzato un approccio orientato ai blocchi per descrivere il nostro sistema; ora perÃ² diviene piÃ¹ utile descrivere tale sistema con un modello orientato agli oggetti.\\
+Fino ad ora abbiamo utilizzato un approccio orientato ai blocchi per descrivere il nostro sistema; ora però diviene più utile descrivere tale sistema con un modello orientato agli oggetti.\\
 A questo scopo, come prima cosa definiamo un connettore che esprima l'accoppiamento sincrono e rigido, ovvero nel quale tutti i modelli connessi hanno la stessa frequenza e non presentano fenomeni di disallineamento.
 \begin{verbatim}
 connector PowerFreqPort
