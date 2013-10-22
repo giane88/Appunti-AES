@@ -1,6 +1,6 @@
 \label{capitolo6}
 \section{Load Flow}
-Prima di entrare nel merito della discussione ricordiamo che la potenza viene ceduta dal generatore alla rete in base all'angolo del generatore; inoltre l'effetto di generatori combinati sulla rete Ë espresso dalla matrice di ammittanza della rete.\\
+Prima di entrare nel merito della discussione ricordiamo che la potenza viene ceduta dal generatore alla rete in base all'angolo del generatore; inoltre l'effetto di generatori combinati sulla rete √® espresso dalla matrice di ammittanza della rete.\\
 Visto che ci occuperemo di una rete di tipo AC ci conviene abbandonare il contesto propriamente energetico per adottare il contesto dei fasori.\\
 Vediamo alcune semplificazioni che adotteremo nel seguito di questa discussiosne:
 \begin{itemize}
@@ -11,8 +11,8 @@ Vediamo alcune semplificazioni che adotteremo nel seguito di questa discussiosne
 Indichiamo ora $\underline{V}_n= V$ il fasore di voltaggio della rete.
 Supponendo che il voltaggio del generatore sia controllato in ampietta per essere uguale a $V$ attraverso l'espressione:
 $$\underline{V}_g=V(\cos \delta+j\sin\delta)$$
-dove $\delta$ Ë l'angolo del generatore.
-Ed infine $\underline{Y}_{gn}=G_{gn}-jB_{gn}$ Ë l'ammittanza della connessione generatore-rete.
+dove $\delta$ √® l'angolo del generatore.
+Ed infine $\underline{Y}_{gn}=G_{gn}-jB_{gn}$ √® l'ammittanza della connessione generatore-rete.
 Possiamo quindi calcolarci le potenze attive e reattive come:
 $$
 \begin{array}{ccc}
@@ -20,24 +20,24 @@ P&=&(G(1-\cos\delta)+B\sin\delta)V^2\\
 Q&=&(B(1-\cos\delta)+G\sin\delta)V^2\\
 \end{array}
 $$
-Da qui si vede come variando $\delta$ si puÚ controllare P e Q seguir‡ di conseguenza.
-Altro modo per controllare contemporaneamente P e Q Ë quello di variare la tensione di riferimento; rifacendo i calcoli con $V_g$ si nota questa cosa infatti:
+Da qui si vede come variando $\delta$ si pu√≤ controllare P e Q seguir√† di conseguenza.
+Altro modo per controllare contemporaneamente P e Q √® quello di variare la tensione di riferimento; rifacendo i calcoli con $V_g$ si nota questa cosa infatti:
 $$
 \begin{array}{ccc}
 P&=&GV_g^2+(B\sin\delta-G\cos\delta)VV_g\\
 Q&=&BV_g^2+(G\sin\delta+B\cos\delta)VV_g
 \end{array}
 $$
-Esistono molti altri modi per controllare la potenza reattiva ma per noi Ë sufficente capire come il trasferimento di energia sulla rete puÚ essere controllato variando $\delta$ accellerando o decellerando.\\
+Esistono molti altri modi per controllare la potenza reattiva ma per noi √® sufficente capire come il trasferimento di energia sulla rete pu√≤ essere controllato variando $\delta$ accellerando o decellerando.\\
 I problemi che possiamo riscontrare nel trasferimento di energia sono principalmente di due tipi:
 \begin{itemize}
 \item Il \emph{Load Flow} o flusso di carico 
 \item L'\emph{Optiaml Power Flow}
 \end{itemize}
-Prima di entrare in dettaglio in questi problemi perÚ dobbiamo rivedere i concetti di matrice di ammittanza.\\
-Consideriamo ora una rete con $n_B$ bus nei quali $\underline{V}_i$ e $\underline{I}_i$ sono rispettivamente la tensione e la corrente che circola nel bus $i$. In generale ogni bus Ë connesso con altri bus attraverso delle line; dove $\underline{y}_{ij} = g_{ij}-jb_{ij}$ Ë il valore dell'ammittanza della linea. Alcuni bus sono connessi ad almeno un generatore (G) mentre altri sono connessi a dei carichi e per questo vengono chiamati PQ bus in quanto generano componeti di potenza sia attivi che reattivi.\\
+Prima di entrare in dettaglio in questi problemi per√≤ dobbiamo rivedere i concetti di matrice di ammittanza.\\
+Consideriamo ora una rete con $n_B$ bus nei quali $\underline{V}_i$ e $\underline{I}_i$ sono rispettivamente la tensione e la corrente che circola nel bus $i$. In generale ogni bus √® connesso con altri bus attraverso delle line; dove $\underline{y}_{ij} = g_{ij}-jb_{ij}$ √® il valore dell'ammittanza della linea. Alcuni bus sono connessi ad almeno un generatore (G) mentre altri sono connessi a dei carichi e per questo vengono chiamati PQ bus in quanto generano componeti di potenza sia attivi che reattivi.\\
 Descriviamo ora la rete attraverso un amatrice detta matrice delle ammittanze.
-La matrice delle ammittanze Ë creata seguendo questi passi:
+La matrice delle ammittanze √® creata seguendo questi passi:
 \begin{itemize}
 \item si parte dalla rappresentazione usuale della rete con i generatori e le impedenze;
 \item si inietta una corrente $\underline{I}_i$ in ogni bus e si ricava la tensione ad ogni nodo 
