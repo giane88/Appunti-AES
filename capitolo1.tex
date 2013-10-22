@@ -1,32 +1,32 @@
-\label{capitolo1}
-\section{Introduzione}I sistemi che generano, distribuiscono e consumano esergia sono diventati sempre più complessi ed articolati a causa di diversi tipi di sorgente dai quali l'energia viene ricavata (rinnovabili e non), diversi metodi di generazione, un mercato complesso ed in rapida evoluzione.\\
-La progettazione di sistemi energetici richiede perciò sempre più la figura di un ingegnere automatico che abbia una visione del sistema a più livelli, permetta una sempre più alta integrazione e sia in grado di soddisfare le nuove esigenze.\\
-Scopo del corso è quello di fornire una visione a livello di sistema dei problemi di controllo analizzando le soluzione adottate e gli sviluppi futuri senza entrare troppo nel dettaglio dei generatori e utilizzatori.
+ï»¿\label{capitolo1}
+\section{Introduzione}I sistemi che generano, distribuiscono e consumano esergia sono diventati sempre piÃ¹ complessi ed articolati a causa di diversi tipi di sorgente dai quali l'energia viene ricavata (rinnovabili e non), diversi metodi di generazione, un mercato complesso ed in rapida evoluzione.\\
+La progettazione di sistemi energetici richiede perciÃ² sempre piÃ¹ la figura di un ingegnere automatico che abbia una visione del sistema a piÃ¹ livelli, permetta una sempre piÃ¹ alta integrazione e sia in grado di soddisfare le nuove esigenze.\\
+Scopo del corso Ã¨ quello di fornire una visione a livello di sistema dei problemi di controllo analizzando le soluzione adottate e gli sviluppi futuri senza entrare troppo nel dettaglio dei generatori e utilizzatori.
 \subsection{L'automazione nei sistemi energetici}
-I principi di automazione nei sistemi energetici li troviamo praticamente ovunque, nei refrigeratori, nelle caldaie, nelle lavatrici; più in generale nei generatori e nei consumatori.
+I principi di automazione nei sistemi energetici li troviamo praticamente ovunque, nei refrigeratori, nelle caldaie, nelle lavatrici; piÃ¹ in generale nei generatori e nei consumatori.
 A qualsiasi livello di progetto grandi componenti, macchinari industriali, piani energetici.\\
-Praticamente l'automazione nei sistemi energetici è ovunque si abbia una trasformazione di energia, dove la parola "trasformazione" assume un significato diverso a seconda del contesto nel quale lavoriamo, ad esempio parliamo di "generazione" nel caso produzione di energia, "consumo" nel caso di utilizzo di energia e di "trasporto".\\
-Ogni oggetto (o aggregazione di oggetti) può essere controllato per raggiungere degli obiettivi locali, ma bisogna sempre tener presente che ogni azione su un oggetto influenza l'intero sistema.\\
-Nonostante tutto non si può definire una gerarchia tra i sistemi in quanto questa caratteristica richiederebbe un controllore enorme per eseguire il lavoro.\\
+Praticamente l'automazione nei sistemi energetici Ã¨ ovunque si abbia una trasformazione di energia, dove la parola "trasformazione" assume un significato diverso a seconda del contesto nel quale lavoriamo, ad esempio parliamo di "generazione" nel caso produzione di energia, "consumo" nel caso di utilizzo di energia e di "trasporto".\\
+Ogni oggetto (o aggregazione di oggetti) puÃ² essere controllato per raggiungere degli obiettivi locali, ma bisogna sempre tener presente che ogni azione su un oggetto influenza l'intero sistema.\\
+Nonostante tutto non si puÃ² definire una gerarchia tra i sistemi in quanto questa caratteristica richiederebbe un controllore enorme per eseguire il lavoro.\\
 Possiamo comunque strutturare il sistema capendo quali sono i problemi rilevanti e se e come possono essere controllati ragionevolmente.
-Un problema può essere dominato se la sua estensione è finita e può essere descritta da condizioni di confine specifiche ed è possibile trovare per esso almeno una soluzione di complessità accettabile.\\
-Per descrivere e capire il problema abbiomo bisogno di un approccio sistematico nel quale i componenti sono descritti a diversi livelli di dettaglio, preservano le loro interfacce con gli altri componenti e sono il più possibile indipendenti da come essi sono connessi con il resto del sistema.
+Un problema puÃ² essere dominato se la sua estensione Ã¨ finita e puÃ² essere descritta da condizioni di confine specifiche ed Ã¨ possibile trovare per esso almeno una soluzione di complessitÃ  accettabile.\\
+Per descrivere e capire il problema abbiomo bisogno di un approccio sistematico nel quale i componenti sono descritti a diversi livelli di dettaglio, preservano le loro interfacce con gli altri componenti e sono il piÃ¹ possibile indipendenti da come essi sono connessi con il resto del sistema.
 \subsection{Definizioni di base}
 Di seguito alcune definizione di base prima di cominciare.
 \begin{description}
 \item[Primary-Secondary energy(PE-SE)]:
 \begin{itemize}
-\item Primary Energy: è quell'energia che può essere ricavata direttamente in natura(gas, vento, sole);
-\item Secondary Energy: è quell'energia ricavata trasformando l'energia primaria in una forma più facile da utilizzare, immagazzinare e trasportare.
+\item Primary Energy: Ã¨ quell'energia che puÃ² essere ricavata direttamente in natura(gas, vento, sole);
+\item Secondary Energy: Ã¨ quell'energia ricavata trasformando l'energia primaria in una forma piÃ¹ facile da utilizzare, immagazzinare e trasportare.
 \end{itemize}
 \item[Renewable-Non Renewable Energy Sources (RES-NRES)]:
 \begin{itemize}
-\item Energia rinnovabile è ottenuta da una fonte di energia praticamente inesauribile.
+\item Energia rinnovabile Ã¨ ottenuta da una fonte di energia praticamente inesauribile.
 \item Energia non rinnovabile richiede un consumo di "carburante" e il rilascio di inquinanti (es. petrolio, gas).
 \end{itemize}
-\item[Energy intensity]:Quantità di energia per unità; ad esempio per unità prodotta o per servire una determinata richiesta.
+\item[Energy intensity]:QuantitÃ  di energia per unitÃ ; ad esempio per unitÃ  prodotta o per servire una determinata richiesta.
 \item[Energy conservation]: Riduzione in termini assoluti del consumo di energia.
-\item[Energy efficenty]: Riduzione di EI preservando la quantità di risultato.
+\item[Energy efficenty]: Riduzione di EI preservando la quantitÃ  di risultato.
 \end{description}
 
 \subsection{Alcuni problemi di controllo}
